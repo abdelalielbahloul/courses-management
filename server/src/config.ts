@@ -3,6 +3,6 @@ export default {
         host: 'localhost',
         user: 'root',
         password: '',
-        dataabse: 'courses_db'
+        database: 'courses_db'
     }
 }

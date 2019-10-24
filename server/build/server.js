@@ -14,13 +14,23 @@ class Server {
         this.config();
         this.routes();
     }
-    // cette methode sert a tous les configuration de notre server
+    // cette methode sert a tous les configuration de notre server et les middleware de notre rest api 
     config() {
         this.app.set('port', process.env.PORT || 3000); //initialiser le port de notre server nodejs par default 3000
         this.app.use(morgan_1.default('dev')); //initialiser morgan
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'origin, X-Requested-With, Content-Type, Accept, Authorization');
+            if (req.method === 'OPTIONS') {
+                res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, PATCH, POST');
+                res.sendStatus(200);
+                return res.json({});
+            }
+            next();
+        });
     }
     //cete methode sert a definir les routes acceissibles a notre server
     routes() {

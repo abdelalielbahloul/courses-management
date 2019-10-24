@@ -17,7 +17,7 @@ class CoursesRoutes {
 
         this.router.put('/:id', coursesController.update);
 
-        this.router.get('/:id', coursesController.delete);
+        this.router.delete('/:id', coursesController.delete);
 
 
 
