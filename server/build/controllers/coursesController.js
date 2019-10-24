@@ -79,7 +79,7 @@ class CoursesController {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
             const updatedCourse = req.body;
-            const queryString = "UPDATE courses set ? WHERE id = ?";
+            const queryString = "UPDATE courses SET ? WHERE id = ?";
             yield database_1.default.query(queryString, [updatedCourse, id], (err, rows, fields) => {
                 if (err) {
                     console.log(err);

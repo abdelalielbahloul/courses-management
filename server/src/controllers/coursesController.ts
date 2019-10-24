@@ -63,14 +63,13 @@ class CoursesController {
             }
         })
     }
-
     /**
      * update courses
      */
     public async update(req: Request, res: Response): Promise<void> {
         const id = req.params.id;
         const updatedCourse = req.body;
-        const queryString = "UPDATE courses set ? WHERE id = ?";
+        const queryString = "UPDATE courses SET ? WHERE id = ?";
         await connection.query(queryString, [updatedCourse, id], (err, rows, fields) => {
             if(err){
                 console.log(err);
@@ -89,7 +88,6 @@ class CoursesController {
             return
         }
     }
-
     /**
      * delete course
      */
