@@ -9,13 +9,14 @@ class CoursesRoutes {
     config() {
         //definir les routes de CRUD vers nos courses
         this.router.get('/', (req, res) => {
-            res.send('get route');
+            res.send('methode GET of /courses');
         });
         this.router.post('/', (req, res) => {
             res.send('get route');
         });
         this.router.get('/:id', (req, res) => {
-            res.send('get route');
+            const id = req.params.id;
+            res.send(`Getting courses : ${id}`);
         });
         // this.router.get('/', (req, res) => {
         //     res.send('get route');

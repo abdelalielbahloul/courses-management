@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const homeRoutes_1 = __importDefault(require("./routes/homeRoutes"));
 const coursesRoutes_1 = __importDefault(require("./routes/coursesRoutes"));
+const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
 class Server {
     constructor() {
         this.app = express_1.default(); //initialiser notre app par expressjs
@@ -15,6 +17,10 @@ class Server {
     // cette methode sert a tous les configuration de notre server
     config() {
         this.app.set('port', process.env.PORT || 3000); //initialiser le port de notre server nodejs par default 3000
+        this.app.use(morgan_1.default('dev')); //initialiser morgan
+        this.app.use(cors_1.default());
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     //cete methode sert a definir les routes acceissibles a notre server
     routes() {

@@ -1,10 +1,12 @@
 import  express, { Application }  from "express";
 import  homeRoutes  from "./routes/homeRoutes";
 import  coursesRoutes  from "./routes/coursesRoutes";
+import morgan from "morgan";
+import cors from "cors";
 
 
 class Server {
-    public app : Application;
+    public app : Application; //initialiser l'application par l'objet Application de ExpressJs
     constructor() {
         this.app = express(); //initialiser notre app par expressjs
         this.config(); 
@@ -14,6 +16,10 @@ class Server {
     // cette methode sert a tous les configuration de notre server
     config(): void {
         this.app.set('port', process.env.PORT || 3000); //initialiser le port de notre server nodejs par default 3000
+        this.app.use(morgan('dev')); //initialiser morgan
+        this.app.use(cors());
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: false }));
     }
 
     //cete methode sert a definir les routes acceissibles a notre server
@@ -22,7 +28,7 @@ class Server {
         this.app.use('/', homeRoutes);
         this.app.use('/courses', coursesRoutes);
     }
-
+ 
     // demarrer le server 
     start(): void {
         this.app.listen(this.app.get('port'), () => { //get le port de notre app definit dans config()

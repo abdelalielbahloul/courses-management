@@ -9,7 +9,7 @@ class HomeRoutes {
     config() {
         //definir la route initiale de notre api
         this.router.get('/', (req, res) => {
-            res.send('Hello its me');
+            res.send('Hello world');
         });
     }
 }
