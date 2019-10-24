@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { coursesController } from "../controllers/coursesController";
 
 class CoursesRoutes {
     public router : Router = Router();
@@ -8,18 +9,17 @@ class CoursesRoutes {
 
     config(): void {
         //definir les routes de CRUD vers nos courses
-        this.router.get('/', (req, res) => {
-            res.send('methode GET of /courses');
-        });
+        this.router.get('/', coursesController.index);
 
-        this.router.post('/', (req, res) => {
-            res.send('get route');
-        })
+        this.router.post('/', coursesController.create);
 
-        this.router.get('/:id', (req, res) => {
-            const id = req.params.id;
-            res.send(`Getting courses : ${id}`);
-        })
+        this.router.get('/:id', coursesController.show);
+
+        this.router.put('/:id', coursesController.update);
+
+        this.router.get('/:id', coursesController.delete);
+
+
 
         // this.router.get('/', (req, res) => {
         //     res.send('get route');

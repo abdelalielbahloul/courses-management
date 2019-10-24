@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { homeController } from "../controllers/homeController";
 
 class HomeRoutes {
     public router : Router = Router();
@@ -8,9 +9,7 @@ class HomeRoutes {
 
     config(): void {
         //definir la route initiale de notre api
-        this.router.get('/', (req, res) => {
-            res.send('Hello world');
-        })
+        this.router.get('/', homeController.index);
     }
 }
 

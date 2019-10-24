@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS courses_db;
+
+USE courses_db;
+
+CREATE TABLE course (
+    id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(30) NOT NULL,
+    content VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+RENAME TABLE course TO courses;
+
+DESCRIBE courses;
