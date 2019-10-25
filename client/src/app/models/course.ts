@@ -2,7 +2,7 @@ export class Course {
     id?: number;
     title: string;
     content: string;
-    typeCourse: string;
+    type: number;
     created_at?: Date;
     updated_at?: Date;
 }

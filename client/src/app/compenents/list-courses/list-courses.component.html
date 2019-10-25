@@ -1,14 +1,35 @@
+<div class="row mx-auto my-4">
+    <div class="col-md-12">
+        <h1> List of courses</h1>
+    </div>
+</div>
+<div class="row mx-auto my-4">
+    <div class="col-md-6">
+         <input type="text" class="form-control" placeholder="Search...">
+    </div>
+    <!-- <div class="col-md-6 text-right">
+        
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Right-aligned menu
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <button class="dropdown-item" type="button">Action</button>
+            </div>
+        </div>
+    </div> -->
+</div>
 <div class="row my-4 mx-auto">
     <div class="col-md-4 my-2" *ngFor="let course of courses">
-        <div class="card" style="width: 18rem;">
+        <div class="card" >
             <img src="https://avatars0.githubusercontent.com/u/42322435?s=460&v=4" class="card-img-top" alt="@abdelali">
             <div class="card-body">
                 <h5 class="card-title">
-                    <strong>{{ course.title }}</strong>
-                    <footer class="blockquote-footer mt-2"> {{ course.TypeCourse }} </footer>
+                    <strong>{{ course.title | uppercase }}</strong>
+                    <footer class="blockquote-footer mt-2"> {{ course.TypeCourse | uppercase }} </footer>
 
                 </h5>
-              <p class="card-text"> {{ course.content }} </p>
+              <p class="card-text"> {{ course.content | slice: 0 : 30 }} </p>
               <p class="card-subtitle mb-2 text-muted text-right"> Created at: {{ course.created_at | date:"shortDate" }} </p>
               <div class="row mt-3">
                   <div class="col-md-8">

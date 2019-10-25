@@ -1,1 +1,43 @@
-<p>add-courses works!</p>
+<div class="row mx-auto my-4">
+    <div class="col-md-6">
+        <h1> Add courses</h1>
+    </div>
+    <div class="col-md-6 text-right">
+        <a routerLink="/" rel="noopener noreferrer">
+            <i class="fa fa-arrow-left"></i> Back to list            
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="row mx-auto">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+           <div class="card">
+               <div class="card-header">
+                   New course
+               </div>
+               <div class="card-body">
+                    <div class="form-group">
+                        <label for="title"><strong>Title :</strong></label>
+                        <input type="text" [(ngModel)]="myCourse.title" class="form-control" id="title" placeholder="Enter a title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content"><strong>Content :</strong></label>
+                        <textarea class="form-control" [(ngModel)]="myCourse.content" id="content" required rows="4" placeholder="Enter a short description of this course"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="typeCourse"><strong>Type of course :</strong></label>
+                        <select class="custom-select" [(ngModel)]="myCourse.type" id="typeCourse">
+                            <option value=" {{ type.id }} " *ngFor="let type of typesCourse"> {{ type.typeCourse }} </option>
+                        </select>
+                    </div>
+                    <!-- {{ myCourse | json }} -->
+                    <!-- {{ typesCourse | json }} -->
+                    <button type="submit" (click)="persist()" class="btn btn-primary btn-block btn-lg"><i class="fa fa-send"></i> <strong> Add course</strong></button>
+               </div>
+               
+           </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
