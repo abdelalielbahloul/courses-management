@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const homeRoutes_1 = __importDefault(require("./routes/homeRoutes"));
 const coursesRoutes_1 = __importDefault(require("./routes/coursesRoutes"));
+const typeCoursesRoutes_1 = __importDefault(require("./routes/typeCoursesRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 class Server {
@@ -37,6 +38,7 @@ class Server {
         //add les routes disponobles de mon api
         this.app.use('/', homeRoutes_1.default);
         this.app.use('/courses', coursesRoutes_1.default);
+        this.app.use('/typecourses', typeCoursesRoutes_1.default);
     }
     // demarrer le server 
     start() {

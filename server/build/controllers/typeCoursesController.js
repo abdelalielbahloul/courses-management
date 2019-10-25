@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class CoursesController {
+class TypeCoursesController {
     /**
      * index show all courses
      */
     index(req, res) {
-        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id";
+        const queryString = "SELECT id, name as typeCourse FROM typeCourses";
         database_1.default.query(queryString, (err, rows, fields) => {
             if (err) {
                 console.log(err);
@@ -33,7 +33,7 @@ class CoursesController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const queryString = "INSERT INTO courses set ?";
+            const queryString = "INSERT INTO typeCourses set ?";
             yield database_1.default.query(queryString, [req.body], (err, rows, field) => {
                 if (err) {
                     console.log(err);
@@ -53,7 +53,7 @@ class CoursesController {
     show(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
-            const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id WHERE C.id = ?";
+            const queryString = "SELECT id,name as TypeCourse FROM typeCourses WHERE id = ?";
             yield database_1.default.query(queryString, [id], (err, rows, fields) => {
                 if (err) {
                     console.log(err);
@@ -79,7 +79,7 @@ class CoursesController {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
             const updatedCourse = req.body;
-            const queryString = "UPDATE courses SET ? WHERE id = ?";
+            const queryString = "UPDATE typeCourses SET ? WHERE id = ?";
             yield database_1.default.query(queryString, [updatedCourse, id], (err, rows, fields) => {
                 if (err) {
                     console.log(err);
@@ -104,7 +104,7 @@ class CoursesController {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
-            const queryString = "DELETE FROM courses WHERE id = ?";
+            const queryString = "DELETE FROM typeCourses WHERE id = ?";
             yield database_1.default.query(queryString, [id], (err, rows, fields) => {
                 if (err) {
                     console.log(err);
@@ -124,4 +124,4 @@ class CoursesController {
         });
     }
 }
-exports.coursesController = new CoursesController();
+exports.typeCoursesController = new TypeCoursesController();

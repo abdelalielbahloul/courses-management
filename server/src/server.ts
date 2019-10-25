@@ -1,6 +1,7 @@
 import  express, { Application }  from "express";
 import  homeRoutes  from "./routes/homeRoutes";
 import  coursesRoutes  from "./routes/coursesRoutes";
+import typeCoursesRoutes from "./routes/typeCoursesRoutes";
 import morgan from "morgan";
 import cors from "cors";
 
@@ -42,6 +43,7 @@ class Server {
         //add les routes disponobles de mon api
         this.app.use('/', homeRoutes);
         this.app.use('/courses', coursesRoutes);
+        this.app.use('/typecourses', typeCoursesRoutes);
     }
  
     // demarrer le server 
