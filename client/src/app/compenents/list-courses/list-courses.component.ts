@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { CoursesService } from "../../services/courses.service";
+import { Course } from 'src/app/models/course';
 
 @Component({
   selector: 'app-list-courses',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListCoursesComponent implements OnInit {
 
-  constructor() { }
+  // @HostBinding('class') classes = 'card'; 
+
+  courses : Course[] = [];
+
+  constructor( private courseServices: CoursesService ) { }
 
   ngOnInit() {
+    this.getCourses();
+  }
+
+  getCourses(){
+    this.courseServices._getCourses()
+      .subscribe( res => {
+          this.courses = res;
+      })
   }
 
 }

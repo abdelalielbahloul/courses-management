@@ -1,1 +1,20 @@
-<p>list-courses works!</p>
+<div class="row my-4 mx-auto">
+    <div class="col-md-4 my-2" *ngFor="let course of courses">
+        <div class="card" style="width: 18rem;">
+            <img src="https://avatars0.githubusercontent.com/u/42322435?s=460&v=4" class="card-img-top" alt="@abdelali">
+            <div class="card-body">
+              <h5 class="card-title"><strong>{{ course.title }}</strong> </h5>
+              <p class="card-text"> {{ course.content }} </p>
+              <p class="card-subtitle mb-2 text-muted text-right"> Created at: {{ course.created_at |date:"shortDate" }} </p>
+              <div class="row mt-3">
+                  <div class="col-md-8">
+                    <button class="btn btn-warning btn-block"><i class="fa fa-pencil"></i> Edit</button>
+                  </div>
+                  <div class="col-md-4 text-right">
+                      <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
