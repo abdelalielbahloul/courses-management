@@ -7,17 +7,6 @@
     <div class="col-md-6">
          <input type="text" class="form-control" placeholder="Search...">
     </div>
-    <!-- <div class="col-md-6 text-right">
-        
-        <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Right-aligned menu
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-                <button class="dropdown-item" type="button">Action</button>
-            </div>
-        </div>
-    </div> -->
 </div>
 <div class="row my-4 mx-auto">
     <div class="col-md-4 my-2" *ngFor="let course of courses">
@@ -29,14 +18,14 @@
                     <footer class="blockquote-footer mt-2"> {{ course.TypeCourse | uppercase }} </footer>
 
                 </h5>
-              <p class="card-text"> {{ course.content | slice: 0 : 30 }} </p>
+              <p class="card-text"> {{ course.content | slice: 0 : 30 }}... </p>
               <p class="card-subtitle mb-2 text-muted text-right"> Created at: {{ course.created_at | date:"shortDate" }} </p>
               <div class="row mt-3">
                   <div class="col-md-8">
-                    <button class="btn btn-warning btn-block"><i class="fa fa-pencil"></i> Edit</button>
+                    <button class="btn btn-warning btn-block"><i class="fa fa-pencil"></i> <strong> Edit</strong></button>
                   </div>
                   <div class="col-md-4 text-right">
-                      <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                      <button (click)="deleteCourse(course.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                   </div>
               </div>
             </div>

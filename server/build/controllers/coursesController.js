@@ -33,6 +33,11 @@ class CoursesController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (req.body.title === '' || req.body.content === '' || req.body.type == '') {
+                res.sendStatus(500);
+                res.end();
+                return;
+            }
             const queryString = "INSERT INTO courses set ?";
             yield database_1.default.query(queryString, [req.body], (err, rows, field) => {
                 if (err) {

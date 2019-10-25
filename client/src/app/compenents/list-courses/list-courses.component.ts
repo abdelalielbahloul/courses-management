@@ -13,16 +13,23 @@ export class ListCoursesComponent implements OnInit {
 
   courses : Course[] = [];
 
-  constructor( private courseServices: CoursesService ) { }
+  constructor( private courseService: CoursesService ) { }
 
   ngOnInit() {
     this.getCourses();
   }
 
   getCourses(){
-    this.courseServices._getCourses()
+    this.courseService._getCourses()
       .subscribe( res => {
           this.courses = res;
+      })
+  }
+
+  deleteCourse(id){
+    this.courseService._deleteCourse(id)
+      .subscribe( res => {
+          this.courses = this.courses.filter( course => course.id != id)
       })
   }
 

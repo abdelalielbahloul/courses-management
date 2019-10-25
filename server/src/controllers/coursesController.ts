@@ -24,6 +24,13 @@ class CoursesController {
      * create a new course
      */
     public async create(req: Request, res: Response): Promise<void> {
+        
+        if(req.body.title ==='' || req.body.content ==='' || req.body.type == ''){
+            res.sendStatus(500);
+            res.end();
+            return
+        }
+        
         const queryString = "INSERT INTO courses set ?";
         
         await connection.query(queryString, [req.body], (err, rows, field) => {
