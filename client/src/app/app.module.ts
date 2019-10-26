@@ -10,13 +10,17 @@ import { ListCoursesComponent } from './compenents/list-courses/list-courses.com
 import { AddCoursesComponent } from './compenents/add-courses/add-courses.component';
 import { NavBarComponent } from './compenents/nav-bar/nav-bar.component';
 import { CoursesService } from "./services/courses.service";
+import { LoginComponent } from './compenents/login/login.component';
+import { RegisterComponent } from './compenents/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListCoursesComponent,
     AddCoursesComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

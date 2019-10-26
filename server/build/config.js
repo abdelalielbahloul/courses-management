@@ -6,5 +6,6 @@ exports.default = {
         user: 'root',
         password: '',
         database: 'courses_db'
-    }
+    },
+    JWT_KEY: 'keyJsonWebToken'
 };

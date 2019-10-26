@@ -2,6 +2,8 @@ import  express, { Application }  from "express";
 import  homeRoutes  from "./routes/homeRoutes";
 import  coursesRoutes  from "./routes/coursesRoutes";
 import typeCoursesRoutes from "./routes/typeCoursesRoutes";
+import usersRoutes from "./routes/usersRoutes";
+
 import morgan from "morgan";
 import cors from "cors";
 import bodyParser from 'body-parser';
@@ -45,6 +47,8 @@ class Server {
         this.app.use('/', homeRoutes);
         this.app.use('/courses', coursesRoutes);
         this.app.use('/typecourses', typeCoursesRoutes);
+        this.app.use('/users', usersRoutes);
+
     }
  
     // demarrer le server 

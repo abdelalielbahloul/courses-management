@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const homeRoutes_1 = __importDefault(require("./routes/homeRoutes"));
 const coursesRoutes_1 = __importDefault(require("./routes/coursesRoutes"));
 const typeCoursesRoutes_1 = __importDefault(require("./routes/typeCoursesRoutes"));
+const usersRoutes_1 = __importDefault(require("./routes/usersRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
@@ -40,6 +41,7 @@ class Server {
         this.app.use('/', homeRoutes_1.default);
         this.app.use('/courses', coursesRoutes_1.default);
         this.app.use('/typecourses', typeCoursesRoutes_1.default);
+        this.app.use('/users', usersRoutes_1.default);
     }
     // demarrer le server 
     start() {
