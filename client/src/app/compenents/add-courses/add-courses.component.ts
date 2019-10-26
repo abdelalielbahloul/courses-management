@@ -24,17 +24,16 @@ export class AddCoursesComponent implements OnInit {
   constructor( private courseService: CoursesService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getTypeCourses()
+    this.getTypeCourses();
   }
 
   persist(){
     this.courseService._addCourse(this.myCourse)
       .subscribe( (course) => {
-          console.log(course)
           this.courses = [ course, ...this.courses ];
-          this.reset();
       });
-      this.router.navigateByUrl('[/]');      
+      this.reset();
+      this.router.navigate(['/']);      
   }
 
   reset(){

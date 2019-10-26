@@ -5,12 +5,13 @@
 </div>
 <div class="row mx-auto my-4">
     <div class="col-md-6">
-         <input type="text" class="form-control" placeholder="Search...">
+         <input type="text" class="form-control" (keyup)="searchCourse()" [(ngModel)]="searchText" placeholder="Search...">
+         <!-- {{ searchText | json}} -->
     </div>
 </div>
 <div class="row my-4 mx-auto">
-    <div class="col-md-4 my-2" *ngFor="let course of courses">
-        <div class="card" >
+    <div class="col-md-4 my-2" *ngFor="let course of resultCourses">
+        <div class="card">
             <img src="https://avatars0.githubusercontent.com/u/42322435?s=460&v=4" class="card-img-top" alt="@abdelali">
             <div class="card-body">
                 <h5 class="card-title">
@@ -30,5 +31,7 @@
               </div>
             </div>
         </div>
+        
     </div>
+   
 </div>

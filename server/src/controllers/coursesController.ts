@@ -114,7 +114,7 @@ class CoursesController {
         if(connection.threadId != null){
             res.sendStatus(200);
         }else{
-            res.sendStatus(500);
+            res.sendStatus(404);
             res.end();
             return
         }

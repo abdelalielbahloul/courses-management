@@ -11,7 +11,12 @@ export class ListCoursesComponent implements OnInit {
 
   // @HostBinding('class') classes = 'card'; 
 
+  searchText = '';
   courses : Course[] = [];
+
+  resultCourses : Course[] = [];
+
+  
 
   constructor( private courseService: CoursesService ) { }
 
@@ -22,15 +27,21 @@ export class ListCoursesComponent implements OnInit {
   getCourses(){
     this.courseService._getCourses()
       .subscribe( res => {
-          this.courses = res;
+          this.resultCourses = this.courses = res;
       })
   }
 
   deleteCourse(id){
     this.courseService._deleteCourse(id)
-      .subscribe( res => {
+      .subscribe( () => {
           this.courses = this.courses.filter( course => course.id != id)
       })
+  }
+
+  searchCourse(){
+    this.resultCourses = this.courses.filter( (course) => 
+      course.title.includes(this.searchText) || course.content.includes(this.searchText)
+    )
   }
 
 }
