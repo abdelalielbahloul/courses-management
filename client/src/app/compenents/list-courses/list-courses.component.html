@@ -12,7 +12,7 @@
 <div class="row my-4 mx-auto">
     <div class="col-md-4 my-2" *ngFor="let course of resultCourses">
         <div class="card">
-            <img src="https://avatars0.githubusercontent.com/u/42322435?s=460&v=4" class="card-img-top" alt="@abdelali">
+            <img [src]="'/assets/@abdelali.jpeg'" class="card-img-top" alt="@abdelali">
             <div class="card-body">
                 <h5 class="card-title">
                     <strong>{{ course.title | uppercase }}</strong>
@@ -20,18 +20,58 @@
 
                 </h5>
               <p class="card-text"> {{ course.content | slice: 0 : 30 }}... </p>
-              <p class="card-subtitle mb-2 text-muted text-right"> Created at: {{ course.created_at | date:"shortDate" }} </p>
+              <p class="card-subtitle mb-2 text-muted text-right"> <strong>Created at:</strong> {{ course.created_at | date:"longDate" }} </p>
               <div class="row mt-3">
                   <div class="col-md-8">
-                    <button class="btn btn-warning btn-block"><i class="fa fa-pencil"></i> <strong> Edit</strong></button>
+                    <button class="btn btn-warning btn-block" (click)="editCourse(course.id)"><i class="fa fa-pencil"></i> <strong> Edit</strong></button>
                   </div>
                   <div class="col-md-4 text-right">
-                      <button (click)="deleteCourse(course.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                      <button (click)="deleteCourse(course.id)" data-toggle="modal" data-target="#orangeModalSubscription" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                   </div>
               </div>
             </div>
         </div>
-        
+        <!-- {{ updatedCourse | json }} -->
     </div>
+
+    <div class="modal fade" id="orangeModalSubscription" tabindex="1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Edit course</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <input type="text" id="title" value="" [(ngModel)]="updatedCourse.title" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="title">Title :</label>
+        </div>
+
+        <div class="md-form">
+          <label data-error="wrong" data-success="right" for="content">Content :</label>
+          <textarea id="content" [(ngModel)]="updatedCourse.content" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="btn btn-warning btn-block waves-effect" (click)="updateCourse(updatedCourse)">Update course <i class="fas fa-paper-plane-o ml-1"></i></a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!-- <div class="text-center">
+  <a href="#" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#orangeModalSubscription">Launch
+    modal Subscription</a>
+</div> -->
    
 </div>

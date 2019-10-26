@@ -9,6 +9,7 @@ const coursesRoutes_1 = __importDefault(require("./routes/coursesRoutes"));
 const typeCoursesRoutes_1 = __importDefault(require("./routes/typeCoursesRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const body_parser_1 = __importDefault(require("body-parser"));
 class Server {
     constructor() {
         this.app = express_1.default(); //initialiser notre app par expressjs
@@ -20,8 +21,8 @@ class Server {
         this.app.set('port', process.env.PORT || 3000); //initialiser le port de notre server nodejs par default 3000
         this.app.use(morgan_1.default('dev')); //initialiser morgan
         this.app.use(cors_1.default());
-        this.app.use(express_1.default.json());
-        this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use(body_parser_1.default.json());
+        this.app.use(body_parser_1.default.urlencoded({ extended: false }));
         this.app.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Headers', 'origin, X-Requested-With, Content-Type, Accept, Authorization');

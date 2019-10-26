@@ -44,14 +44,8 @@
                     <div class="form-group">
                         <label for="typeCourse"><strong>Type of course :</strong><span class="text-muted">(By default Other)</span></label>
                         <select class="custom-select" [(ngModel)]="myCourse.type" #typeC="ngModel" id="typeCourse">
-                            <option value="" disabled >Choose one</option>
                             <option value=" {{ type.id }} " *ngFor="let type of typesCourse"> {{ type.typeCourse }} </option>
                         </select>
-                        <div class="errors-div" *ngIf="typeC.touched || typeC.invalid ">
-                            <small *ngIf="typeC.errors.required" class="form-text text-muted">
-                                Type of course is required
-                            </small>
-                        </div>
                     </div>
                     <!-- {{ myCourse | json }} -->
                     <!-- {{ typesCourse | json }} -->

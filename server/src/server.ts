@@ -4,6 +4,7 @@ import  coursesRoutes  from "./routes/coursesRoutes";
 import typeCoursesRoutes from "./routes/typeCoursesRoutes";
 import morgan from "morgan";
 import cors from "cors";
+import bodyParser from 'body-parser';
 
 
 class Server {
@@ -19,8 +20,8 @@ class Server {
         this.app.set('port', process.env.PORT || 3000); //initialiser le port de notre server nodejs par default 3000
         this.app.use(morgan('dev')); //initialiser morgan
         this.app.use(cors());
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use( (req, res, next) => { //definir les headers et les methodes accessibles vers notre api
             res.header('Access-Control-Allow-Origin', '*');
             res.header(

@@ -118,14 +118,14 @@ class CoursesController {
                     return;
                 }
             });
-            if (database_1.default.threadId != null) {
-                res.sendStatus(200);
-            }
-            else {
-                res.sendStatus(404);
-                res.end();
-                return;
-            }
+            res.status(200).json({ msg: 'course was deleted' });
+            // if(connection.threadId != null){
+            //     res.sendStatus(200);
+            // }else{
+            //     res.sendStatus(404);
+            //     res.end();
+            //     return
+            // }
         });
     }
 }

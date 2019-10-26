@@ -41,5 +41,11 @@ export class CoursesService {
     return this.http.delete(`${this.apiCourses}/courses/${id}`, this.httpOptions);
   }
 
+  _getCourse(id){
+    return this.http.get<Course>(`${this.apiCourses}/courses/${id}`);
+  }
   
+  _updateCourse(course){
+   return this.http.put(`${this.apiCourses}/courses`,course, this.httpOptions);
+  }
 }

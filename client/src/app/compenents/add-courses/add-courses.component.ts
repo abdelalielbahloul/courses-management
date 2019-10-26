@@ -25,7 +25,16 @@ export class AddCoursesComponent implements OnInit {
 
   ngOnInit() {
     this.getTypeCourses();
+    this.getCourses();
   }
+
+  getCourses(){
+    this.courseService._getCourses()
+      .subscribe( res => {
+          this.courses = this.courses = res;
+      })
+  }
+
 
   persist(){
     this.courseService._addCourse(this.myCourse)

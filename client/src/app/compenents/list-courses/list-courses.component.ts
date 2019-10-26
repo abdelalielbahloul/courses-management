@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { CoursesService } from "../../services/courses.service";
 import { Course } from 'src/app/models/course';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-list-courses',
@@ -15,6 +16,12 @@ export class ListCoursesComponent implements OnInit {
   courses : Course[] = [];
 
   resultCourses : Course[] = [];
+
+  updatedCourse : Course = {
+    title: '',
+    content: '',
+    type: 0
+  }
 
   
 
@@ -34,14 +41,29 @@ export class ListCoursesComponent implements OnInit {
   deleteCourse(id){
     this.courseService._deleteCourse(id)
       .subscribe( () => {
-          this.courses = this.courses.filter( course => course.id != id)
+          this.courses = this.courses.filter( course => course.id != id);
+          this.getCourses();         
       })
+  }
+
+  editCourse(id){
+    this.courseService._getCourse(id)
+      .subscribe( course => this.updatedCourse = course)
+    
   }
 
   searchCourse(){
     this.resultCourses = this.courses.filter( (course) => 
-      course.title.includes(this.searchText) || course.content.includes(this.searchText)
+      course.title.toLocaleLowerCase().includes(this.searchText) || course.content.toLocaleLowerCase().includes(this.searchText)
     )
+  }
+
+  updateCourse(course){
+    this.courseService._updateCourse(course)
+      .subscribe( () => {
+        this.getCourses();
+      })
+    
   }
 
 }
