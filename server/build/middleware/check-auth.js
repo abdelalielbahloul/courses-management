@@ -23,25 +23,26 @@ exports.checkAuth = (req, res, next) => {
     catch (error) {
         //If token is not valid, respond with 401 (unauthorized)
         res.status(401).json({
-            message: "Auth failed",
-            err: error
+            message: "Auth failed"
         });
         res.end();
         return;
     }
     //The token is valid for 1 hour
     //We want to send a new token on every request
-    const newToken = jwt.sign({
-        email: req.body.email,
-        userId: req.body.id
-    }, config_1.default.JWT_KEY, {
-        expiresIn: "1h"
-    });
-    res.status(200).json({
-        message: "the token was updated",
-        newToken: newToken
-    });
-    res.setHeader("token", newToken);
+    // const newToken = jwt.sign({ 
+    //     email: req.body.email, 
+    //     userId: req.body.id 
+    //   }, 
+    //   config.JWT_KEY, 
+    //   {
+    //   expiresIn: "1h"
+    // });
+    // res.status(200).json({
+    //     message: "the token was updated",
+    //     newToken : newToken
+    // })
+    // res.setHeader("token", newToken);
     //Call the next middleware or controller
     next();
 };
