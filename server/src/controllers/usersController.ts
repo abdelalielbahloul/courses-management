@@ -101,7 +101,7 @@ class UsersController {
      */
     public async delete(req: Request, res: Response): Promise<void> {
         const id = req.params.id;
-        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id WHERE C.id = ?";
+        const queryString = "DELETE FROM users WHERE id = ?";
 
         await connection.query(queryString, [id], (err, rows, fields) => {
             if(err){
@@ -111,14 +111,31 @@ class UsersController {
                 res.end();
                 return
             }
-            if(rows.length > 0){
-                return res.json(rows);
-            }else{
-                res.sendStatus(404);
+            res.status(200).json({
+                message: "User was deleted succussfully!"
+            });
+            
+        })
+    }
+
+    /**
+     * edit password
+     */
+    public async edit(req: Request, res: Response): Promise<void> {
+        
+        const queryString = "";
+        const password = req.body.password;
+        bcryptjs.hash(password, 10,(error, hash) => {
+            if(error) {
+                res.sendStatus(500);
                 res.end();
                 return
             }
+            const newPassword = hash
         })
+        // await connection.query(queryString, [newPassword], (err, rows, fields) => {
+
+        // });
     }
    
 }

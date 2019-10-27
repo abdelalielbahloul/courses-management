@@ -96,7 +96,7 @@ class UsersController {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
-            const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id WHERE C.id = ?";
+            const queryString = "DELETE FROM users WHERE id = ?";
             yield database_1.default.query(queryString, [id], (err, rows, fields) => {
                 if (err) {
                     console.log(err);
@@ -104,15 +104,29 @@ class UsersController {
                     res.end();
                     return;
                 }
-                if (rows.length > 0) {
-                    return res.json(rows);
-                }
-                else {
-                    res.sendStatus(404);
+                res.status(200).json({
+                    message: "User was deleted succussfully!"
+                });
+            });
+        });
+    }
+    /**
+     * edit password
+     */
+    edit(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const queryString = "";
+            const password = req.body.password;
+            bcryptjs_1.default.hash(password, 10, (error, hash) => {
+                if (error) {
+                    res.sendStatus(500);
                     res.end();
                     return;
                 }
+                const newPassword = hash;
             });
+            // await connection.query(queryString, [newPassword], (err, rows, fields) => {
+            // });
         });
     }
 }
