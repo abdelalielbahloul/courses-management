@@ -64,6 +64,7 @@ class UsersController {
             }
             
             bcryptjs.compare(req.body.password, rows[0].password, (error, result) => {
+                
                 if(error){
                     return res.status(401).send({
                         message: 'Auth failed'
@@ -72,7 +73,7 @@ class UsersController {
                 if(result){
                     const token = JWT.sign({
                         email: rows[0].email,
-                        userId: rows[0]._id
+                        userId: rows[0].id
                     },
                     config.JWT_KEY,
                     {

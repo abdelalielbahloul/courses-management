@@ -74,7 +74,7 @@ class UsersController {
                     if (result) {
                         const token = jsonwebtoken_1.default.sign({
                             email: rows[0].email,
-                            userId: rows[0]._id
+                            userId: rows[0].id
                         }, config_1.default.JWT_KEY, {
                             expiresIn: '1H'
                         });
