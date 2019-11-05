@@ -1,7 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { CoursesService } from "../../services/courses.service";
 import { Course } from 'src/app/models/course';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-list-courses',
@@ -19,7 +18,8 @@ export class ListCoursesComponent implements OnInit {
 
   updatedCourse : Course = {
     title: '',
-    content: ''
+    content: '',
+    typeCourse: ''
   }
 
   

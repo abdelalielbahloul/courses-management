@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label for="typeCourse"><strong>Type of course :</strong><span class="text-muted">(By default Other)</span></label>
                         <select class="custom-select" [(ngModel)]="myCourse.type" #typeC="ngModel" id="typeCourse">
-                            <option value=" {{ type.id }} " *ngFor="let type of typesCourse"> {{ type.typeCourse }} </option>
+                            <option value=" {{ type.typeCourse }} " *ngFor="let type of typesCourse"> {{ type.typeCourse }} </option>
                         </select>
                     </div>
                     <!-- {{ myCourse | json }} -->

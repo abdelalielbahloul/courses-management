@@ -16,8 +16,7 @@
             <div class="card-body">
                 <h5 class="card-title">
                     <strong>{{ course.title | uppercase }}</strong>
-                    <footer class="blockquote-footer mt-2"> {{ course.TypeCourse | uppercase }} </footer>
-
+                    <footer class="blockquote-footer mt-2"> {{ course.typeCourse | uppercase }} </footer>
                 </h5>
               <p class="card-text"> {{ course.content | slice: 0 : 30 }}... </p>
               <p class="card-subtitle mb-2 text-muted text-right"> <strong>Created at:</strong> {{ course.created_at | date:"longDate" }} </p>
@@ -26,7 +25,7 @@
                     <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#orangeModalSubscription" (click)="editCourse(course)"><i class="fa fa-pencil"></i> <strong> Edit</strong></button>
                   </div>
                   <div class="col-md-4 text-right">
-                      <button (click)="deleteCourse(course.id)" data-toggle="modal" data-target="#orangeModalSubscription" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                      <button (click)="deleteCourse(course.id)" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                   </div>
               </div>
             </div>
@@ -58,6 +57,10 @@
         <div class="form-group">
           <label for="content">Content :</label>
           <textarea id="content" [(ngModel)]="updatedCourse.content" cols="30" rows="10" class="form-control" ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="typeCourse">Content :</label>
+            <input type="text" class="form-control" id="typeCourse" [(ngModel)]="updatedCourse.typeCourse">
         </div>
       </div>
       <!--Footer-->

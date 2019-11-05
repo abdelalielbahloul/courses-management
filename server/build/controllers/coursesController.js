@@ -17,7 +17,7 @@ class CoursesController {
      * index show all courses
      */
     index(req, res) {
-        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.typeCourse = T.id";
+        const queryString = "SELECT C.id,title,content,typeCourse, created_at ,updated_at FROM courses C";
         database_1.default.query(queryString, (err, rows, fields) => {
             if (err) {
                 console.log(err);
