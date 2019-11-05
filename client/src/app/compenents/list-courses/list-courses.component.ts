@@ -19,8 +19,7 @@ export class ListCoursesComponent implements OnInit {
 
   updatedCourse : Course = {
     title: '',
-    content: '',
-    type: 0
+    content: ''
   }
 
   
@@ -46,10 +45,8 @@ export class ListCoursesComponent implements OnInit {
       })
   }
 
-  editCourse(id){
-    this.courseService._getCourse(id)
-      .subscribe( course => this.updatedCourse = course)
-    
+  editCourse(course){
+    this.updatedCourse = course;            
   }
 
   searchCourse(){
@@ -59,6 +56,7 @@ export class ListCoursesComponent implements OnInit {
   }
 
   updateCourse(course){
+    // delete this.updatedCourse.typeCourse;
     this.courseService._updateCourse(course)
       .subscribe( () => {
         this.getCourses();

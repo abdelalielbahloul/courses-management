@@ -12,13 +12,13 @@ class CoursesRoutes {
         //definir les routes de CRUD vers nos courses
         this.router.get('/', coursesController.index);
 
-        this.router.post('/', checkAuth,coursesController.create);
+        this.router.post('/', coursesController.create);
 
-        this.router.get('/:id', checkAuth,coursesController.show);
+        this.router.get('/:id', coursesController.show);
 
-        this.router.put('/:id', checkAuth,coursesController.update);
+        this.router.put('/:id', coursesController.update);
 
-        this.router.delete('/:id', checkAuth,coursesController.delete);
+        this.router.delete('/:id', coursesController.delete);
 
 
 

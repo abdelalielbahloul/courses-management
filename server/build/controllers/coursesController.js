@@ -17,7 +17,7 @@ class CoursesController {
      * index show all courses
      */
     index(req, res) {
-        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id";
+        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.typeCourse = T.id";
         database_1.default.query(queryString, (err, rows, fields) => {
             if (err) {
                 console.log(err);
@@ -58,7 +58,7 @@ class CoursesController {
     show(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
-            const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id WHERE C.id = ?";
+            const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.typeCourse = T.id WHERE C.id = ?";
             yield database_1.default.query(queryString, [id], (err, rows, fields) => {
                 if (err) {
                     console.log(err);
@@ -94,7 +94,9 @@ class CoursesController {
                 }
             });
             if (database_1.default.threadId != null) {
-                res.sendStatus(200);
+                res.json({
+                    message: "Updated successufuly!"
+                });
             }
             else {
                 res.sendStatus(500);

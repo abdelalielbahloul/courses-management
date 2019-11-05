@@ -12,8 +12,7 @@ export class CoursesService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
+      'Content-Type':  'application/json'
     })
   };
   courses : Course[] = [];
@@ -46,6 +45,6 @@ export class CoursesService {
   }
   
   _updateCourse(course){
-   return this.http.put(`${this.apiCourses}/courses`,course, this.httpOptions);
+   return this.http.put(`${this.apiCourses}/courses/${course.id}`,course);
   }
 }

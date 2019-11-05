@@ -7,7 +7,7 @@ class CoursesController {
      */
     public index(req: Request, res: Response) {
 
-        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id";
+        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.typeCourse = T.id";
         
         connection.query(queryString, (err, rows, fields) => {
             if(err){
@@ -51,7 +51,7 @@ class CoursesController {
      */
     public async show(req: Request, res: Response): Promise<void> {
         const id = req.params.id;
-        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.type = T.id WHERE C.id = ?";
+        const queryString = "SELECT C.id,title,content,name as TypeCourse, created_at ,updated_at FROM courses C INNER JOIN typeCourses T on C.typeCourse = T.id WHERE C.id = ?";
 
         await connection.query(queryString, [id], (err, rows, fields) => {
             if(err){
@@ -88,7 +88,9 @@ class CoursesController {
             
         })
         if(connection.threadId != null){
-            res.sendStatus(200);
+            res.json({
+                message: "Updated successufuly!"
+            });
         }else{
             res.sendStatus(500);
             res.end();

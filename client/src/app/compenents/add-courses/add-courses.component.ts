@@ -14,7 +14,7 @@ export class AddCoursesComponent implements OnInit {
   myCourse : Course = {
     title: '',
     content: '',
-    type: 3
+    typeCourse: 3
   }
 
   courses : Course[] = [];
@@ -37,7 +37,12 @@ export class AddCoursesComponent implements OnInit {
 
 
   persist(){
-    this.courseService._addCourse(this.myCourse)
+    const monCourse: Course = {
+      title: this.myCourse.title,
+      content: this.myCourse.content,
+      typeCourse: this.myCourse.typeCourse
+    }
+    this.courseService._addCourse(monCourse)
       .subscribe( (course) => {
           this.courses = [ course, ...this.courses ];
       });
@@ -49,7 +54,7 @@ export class AddCoursesComponent implements OnInit {
     this.myCourse = {
       title: '',
       content: '',
-      type: 3
+      typeCourse: 3
     }
   }
 

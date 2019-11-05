@@ -12,6 +12,8 @@ import { NavBarComponent } from './compenents/nav-bar/nav-bar.component';
 import { CoursesService } from "./services/courses.service";
 import { LoginComponent } from './compenents/login/login.component';
 import { RegisterComponent } from './compenents/register/register.component';
+import { EditCoursesComponent } from './compenents/edit-courses/edit-courses.component';
+import { NotFoundComponent } from './compenents/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegisterComponent } from './compenents/register/register.component';
     AddCoursesComponent,
     NavBarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditCoursesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

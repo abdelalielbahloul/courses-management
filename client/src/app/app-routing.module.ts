@@ -4,6 +4,8 @@ import { ListCoursesComponent } from './compenents/list-courses/list-courses.com
 import { AddCoursesComponent } from './compenents/add-courses/add-courses.component';
 import { LoginComponent } from './compenents/login/login.component';
 import { RegisterComponent } from './compenents/register/register.component';
+import { EditCoursesComponent } from './compenents/edit-courses/edit-courses.component';
+import { NotFoundComponent } from './compenents/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -11,7 +13,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'courses', component: ListCoursesComponent},
-  { path: 'courses/add', component: AddCoursesComponent}
+  { path: 'courses/add', component: AddCoursesComponent},
+  { path: 'courses/edit', component: EditCoursesComponent},
+  { path: '**', component: NotFoundComponent}
+
+
 ];
 
 @NgModule({
